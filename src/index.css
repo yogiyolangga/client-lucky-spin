@@ -1,13 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: 'Roboto', sans-serif;
+    background: url(../public/img/desktopbg.jpg) no-repeat center;
+    background-color: #999999;
+    background-position: right;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media only screen and (max-width: 768px) {
+    body {
+        background: url(../public/img/mobilebg.jpg) center no-repeat;
+        background-color: #FFFFFF;
+        background-position: right;
+        background-attachment: fixed;
+        background-size: cover;
+
+    }
+}
+
+/* arrow spin */
+#container .spinBtn::before {
+    content: '';
+    position: absolute;
+    top: -28px;
+    width: 20px;
+    height: 30px;
+    background: #fff;
+    clip-path: polygon(50% 0%, 15% 100%, 85% 100%);
+}
+
+#container .wheel {
+    box-shadow: 0 0 0 5px #333,
+        0 0 0 15px #fff,
+        0 0 0 18px #111;
+    transition: transform 7s;
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+#container .wheel .number {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: var(--clr);
+    transform-origin: bottom right;
+    transform: rotate(calc(30deg * var(--i) + 14deg));
+    clip-path: polygon(0 0, 40% 0, 100% 100%, 0 40%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+#container .wheel .number span {
+    position: relative;
+    transform: rotate(45deg);
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    text-shadow: 3px 5px 2px rgba(0, 0, 0, 0.15);
+}
+
+#container .wheelm {
+    box-shadow: 0 0 0 5px #333,
+        0 0 0 15px #fff,
+        0 0 0 18px #111;
+    transition: transform 7s;
+    transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+}
+
+#container .wheelm .number {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background: var(--clr);
+    transform-origin: bottom right;
+    transform: rotate(calc(30deg * var(--i) + 14deg));
+    clip-path: polygon(0 0, 40% 0, 100% 100%, 0 40%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+#container .wheelm .number span {
+    position: relative;
+    transform: rotate(45deg);
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    text-shadow: 3px 5px 2px rgba(0, 0, 0, 0.15);
+}
+
+/* #container .wheel .number span::after {
+    content: 'Rp';
+    position: absolute;
+    font-size: 0.75em;
+    font-weight: 500;
+} */
+
+/* Navbar For */
+.hamburger-line {
+    margin-top: 0.5rem
+        /* 8px */
+    ;
+    margin-bottom: 0.5rem
+        /* 8px */
+    ;
+    display: block;
+    height: 2px;
+    width: 30px;
+    background-color: #fff;
+}
+
+.hamburger-active>span:nth-child(1) {
+    --tw-rotate: 45deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hamburger-active>span:nth-child(2) {
+    --tw-scale-x: 0;
+    --tw-scale-y: 0;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.hamburger-active>span:nth-child(3) {
+    transform-origin: top left;
+    --tw-rotate: -45deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.spinloop {
+    animation: animName 2s linear infinite;
+}
+
+@keyframes animName {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
